@@ -1,0 +1,1104 @@
+[
+    {
+        "contract_id": "C01",
+        "title": "Semiconductor Supply Chain Agreement",
+        "contract_text": "TechCore Inc. agrees to purchase 50,000 units of GPU_Chips from SiliconFoundry located in Taiwan. The shipment must be transported via the Port_of_Kaohsiung to the Port_of_LosAngeles using OceanLine_X. A penalty of $1M applies if delivery is delayed by more than 10 days.",
+        "base_graph": {
+            "entities": [
+                {
+                    "id": "TechCore_Inc",
+                    "type": "Company"
+                },
+                {
+                    "id": "SiliconFoundry",
+                    "type": "Company"
+                },
+                {
+                    "id": "GPU_Chips",
+                    "type": "Product"
+                },
+                {
+                    "id": "Taiwan",
+                    "type": "Country"
+                },
+                {
+                    "id": "Port_of_Kaohsiung",
+                    "type": "Port"
+                },
+                {
+                    "id": "Port_of_LosAngeles",
+                    "type": "Port"
+                },
+                {
+                    "id": "OceanLine_X",
+                    "type": "LogisticsProvider"
+                },
+                {
+                    "id": "1M_Penalty",
+                    "type": "FinancialCondition"
+                }
+            ],
+            "relations": [
+                {
+                    "source": "TechCore_Inc",
+                    "target": "SiliconFoundry",
+                    "type": "HAS_CONTRACT_WITH"
+                },
+                {
+                    "source": "SiliconFoundry",
+                    "target": "GPU_Chips",
+                    "type": "PRODUCES"
+                },
+                {
+                    "source": "SiliconFoundry",
+                    "target": "Taiwan",
+                    "type": "LOCATED_IN"
+                },
+                {
+                    "source": "GPU_Chips",
+                    "target": "Port_of_Kaohsiung",
+                    "type": "SHIPPED_FROM"
+                },
+                {
+                    "source": "GPU_Chips",
+                    "target": "Port_of_LosAngeles",
+                    "type": "SHIPPED_TO"
+                },
+                {
+                    "source": "GPU_Chips",
+                    "target": "OceanLine_X",
+                    "type": "TRANSPORTED_BY"
+                },
+                {
+                    "source": "TechCore_Inc",
+                    "target": "1M_Penalty",
+                    "type": "ENFORCES"
+                }
+            ]
+        },
+        "news_sequence": {
+            "entities": [
+                {
+                    "id": "Typhoon_Krathon",
+                    "type": "WeatherEvent"
+                },
+                {
+                    "id": "Taiwan",
+                    "type": "Country"
+                },
+                {
+                    "id": "Typhoon_Krathon",
+                    "type": "WeatherEvent"
+                },
+                {
+                    "id": "Kaohsiung_Region",
+                    "type": "Location"
+                },
+                {
+                    "id": "Kaohsiung_Region",
+                    "type": "Location"
+                },
+                {
+                    "id": "Port_of_Kaohsiung",
+                    "type": "Port"
+                }
+            ],
+            "relations": [
+                {
+                    "source": "Typhoon_Krathon",
+                    "target": "Taiwan",
+                    "type": "APPROACHES"
+                },
+                {
+                    "source": "Typhoon_Krathon",
+                    "target": "Kaohsiung_Region",
+                    "type": "FLOODS"
+                },
+                {
+                    "source": "Kaohsiung_Region",
+                    "target": "Port_of_Kaohsiung",
+                    "type": "CLOSES"
+                }
+            ]
+        }
+    },
+    {
+        "contract_id": "C02",
+        "title": "Energy & Pipeline",
+        "contract_text": "EuroGas signs a deal with NordicEnergy to receive NaturalGas via the Baltic_Pipeline_1. The gas originates from Field_A in Norway. The supply is contingent on the operational status of Compressor_Station_Z. Force Majeure is declared if pipeline pressure drops below 50 bar.",
+        "base_graph": {
+            "entities": [
+                {
+                    "id": "EuroGas",
+                    "type": "Company"
+                },
+                {
+                    "id": "NordicEnergy",
+                    "type": "Company"
+                },
+                {
+                    "id": "NaturalGas",
+                    "type": "Resource"
+                },
+                {
+                    "id": "Baltic_Pipeline_1",
+                    "type": "Infrastructure"
+                },
+                {
+                    "id": "Field_A",
+                    "type": "ExtractionSite"
+                },
+                {
+                    "id": "Norway",
+                    "type": "Country"
+                },
+                {
+                    "id": "Compressor_Station_Z",
+                    "type": "Infrastructure"
+                },
+                {
+                    "id": "Pressure_Drop",
+                    "type": "RiskCondition"
+                }
+            ],
+            "relations": [
+                {
+                    "source": "EuroGas",
+                    "target": "NordicEnergy",
+                    "type": "BUYS_FROM"
+                },
+                {
+                    "source": "NordicEnergy",
+                    "target": "Field_A",
+                    "type": "OPERATES"
+                },
+                {
+                    "source": "Field_A",
+                    "target": "Norway",
+                    "type": "LOCATED_IN"
+                },
+                {
+                    "source": "NaturalGas",
+                    "target": "Baltic_Pipeline_1",
+                    "type": "TRAVERSES"
+                },
+                {
+                    "source": "Baltic_Pipeline_1",
+                    "target": "Compressor_Station_Z",
+                    "type": "DEPENDS_ON"
+                },
+                {
+                    "source": "Compressor_Station_Z",
+                    "target": "Pressure_Drop",
+                    "type": "VULNERABLE_TO"
+                }
+            ]
+        },
+        "news_sequence": {
+            "entities": [
+                {
+                    "id": "Seismic_Activity",
+                    "type": "RiskEvent"
+                },
+                {
+                    "id": "Field_A",
+                    "type": "ExtractionSite"
+                },
+                {
+                    "id": "Seismic_Activity",
+                    "type": "RiskEvent"
+                },
+                {
+                    "id": "Safety_Protocol_Lockdown",
+                    "type": "Procedure"
+                },
+                {
+                    "id": "Safety_Protocol_Lockdown",
+                    "type": "Procedure"
+                },
+                {
+                    "id": "Baltic_Pipeline_1",
+                    "type": "Infrastructure"
+                }
+            ],
+            "relations": [
+                {
+                    "source": "Seismic_Activity",
+                    "target": "Field_A",
+                    "type": "DETECTED_NEAR"
+                },
+                {
+                    "source": "Seismic_Activity",
+                    "target": "Safety_Protocol_Lockdown",
+                    "type": "TRIGGERS"
+                },
+                {
+                    "source": "Safety_Protocol_Lockdown",
+                    "target": "Baltic_Pipeline_1",
+                    "type": "HALTS_OUTPUT"
+                }
+            ]
+        }
+    },
+    {
+        "contract_id": "C03",
+        "title": "Automotive Manufacturing",
+        "contract_text": "AutoMotive_Global sources Steel_Sheets from SteelWorks_Gmbh in Germany. The material is transported by Rail_Cargo_DB to the Assembly_Plant_F in France. Production at Assembly_Plant_F depends on electricity from PowerPlant_Nuclear_Y.",
+        "base_graph": {
+            "entities": [
+                {
+                    "id": "AutoMotive_Global",
+                    "type": "Company"
+                },
+                {
+                    "id": "Steel_Sheets",
+                    "type": "Material"
+                },
+                {
+                    "id": "SteelWorks_Gmbh",
+                    "type": "Supplier"
+                },
+                {
+                    "id": "Germany",
+                    "type": "Country"
+                },
+                {
+                    "id": "Rail_Cargo_DB",
+                    "type": "LogisticsProvider"
+                },
+                {
+                    "id": "Assembly_Plant_F",
+                    "type": "Facility"
+                },
+                {
+                    "id": "France",
+                    "type": "Country"
+                },
+                {
+                    "id": "PowerPlant_Nuclear_Y",
+                    "type": "Utility"
+                }
+            ],
+            "relations": [
+                {
+                    "source": "AutoMotive_Global",
+                    "target": "SteelWorks_Gmbh",
+                    "type": "SUPPLIER_RELATION"
+                },
+                {
+                    "source": "SteelWorks_Gmbh",
+                    "target": "Steel_Sheets",
+                    "type": "MANUFACTURES"
+                },
+                {
+                    "source": "SteelWorks_Gmbh",
+                    "target": "Germany",
+                    "type": "LOCATED_IN"
+                },
+                {
+                    "source": "Steel_Sheets",
+                    "target": "Rail_Cargo_DB",
+                    "type": "MOVED_BY"
+                },
+                {
+                    "source": "Steel_Sheets",
+                    "target": "Assembly_Plant_F",
+                    "type": "DELIVERED_TO"
+                },
+                {
+                    "source": "Assembly_Plant_F",
+                    "target": "PowerPlant_Nuclear_Y",
+                    "type": "REQUIRES_POWER_FROM"
+                }
+            ]
+        },
+        "news_sequence": {
+            "entities": [
+                {
+                    "id": "Trade_Union_GDL",
+                    "type": "Organization"
+                },
+                {
+                    "id": "Rail_Cargo_DB",
+                    "type": "LogisticsProvider"
+                },
+                {
+                    "id": "Trade_Union_GDL",
+                    "type": "Organization"
+                },
+                {
+                    "id": "German_Logistics_Hubs",
+                    "type": "Infrastructure"
+                }
+            ],
+            "relations": [
+                {
+                    "source": "Trade_Union_GDL",
+                    "target": "Rail_Cargo_DB",
+                    "type": "STRIKES_AGAINST"
+                },
+                {
+                    "source": "Trade_Union_GDL",
+                    "target": "German_Logistics_Hubs",
+                    "type": "BLOCKS"
+                }
+            ]
+        }
+    },
+    {
+        "contract_id": "C04",
+        "title": "Pharmaceutical Cold Chain",
+        "contract_text": "PharmaBig orders Vaccine_X from BioLab_Inc. The product requires Cold_Storage at -20C throughout transit. Cargo is flown by AirFreight_Z from Airport_JFK to Airport_Heathrow. BioLab_Inc relies on Chemical_Reagent_Q from Supplier_Chem.",
+        "base_graph": {
+            "entities": [
+                {
+                    "id": "PharmaBig",
+                    "type": "Company"
+                },
+                {
+                    "id": "BioLab_Inc",
+                    "type": "Manufacturer"
+                },
+                {
+                    "id": "Vaccine_X",
+                    "type": "Product"
+                },
+                {
+                    "id": "Cold_Storage",
+                    "type": "Condition"
+                },
+                {
+                    "id": "AirFreight_Z",
+                    "type": "LogisticsProvider"
+                },
+                {
+                    "id": "Airport_JFK",
+                    "type": "Location"
+                },
+                {
+                    "id": "Airport_Heathrow",
+                    "type": "Location"
+                },
+                {
+                    "id": "Supplier_Chem",
+                    "type": "Supplier"
+                },
+                {
+                    "id": "Chemical_Reagent_Q",
+                    "type": "Material"
+                }
+            ],
+            "relations": [
+                {
+                    "source": "PharmaBig",
+                    "target": "Vaccine_X",
+                    "type": "PURCHASES"
+                },
+                {
+                    "source": "BioLab_Inc",
+                    "target": "Vaccine_X",
+                    "type": "PRODUCES"
+                },
+                {
+                    "source": "Vaccine_X",
+                    "target": "Cold_Storage",
+                    "type": "REQUIRES"
+                },
+                {
+                    "source": "Vaccine_X",
+                    "target": "AirFreight_Z",
+                    "type": "TRANSPORTED_BY"
+                },
+                {
+                    "source": "AirFreight_Z",
+                    "target": "Airport_JFK",
+                    "type": "DEPARTS_FROM"
+                },
+                {
+                    "source": "AirFreight_Z",
+                    "target": "Airport_Heathrow",
+                    "type": "ARRIVES_AT"
+                },
+                {
+                    "source": "BioLab_Inc",
+                    "target": "Supplier_Chem",
+                    "type": "DEPENDS_ON"
+                },
+                {
+                    "source": "Supplier_Chem",
+                    "target": "Chemical_Reagent_Q",
+                    "type": "SUPPLIES"
+                }
+            ]
+        },
+        "news_sequence": {
+            "entities": [
+                {
+                    "id": "Volcanic_Ash_Cloud",
+                    "type": "WeatherEvent"
+                },
+                {
+                    "id": "Airport_Heathrow",
+                    "type": "Location"
+                },
+                {
+                    "id": "Volcanic_Ash_Cloud",
+                    "type": "WeatherEvent"
+                },
+                {
+                    "id": "AirFreight_Z",
+                    "type": "LogisticsProvider"
+                }
+            ],
+            "relations": [
+                {
+                    "source": "Volcanic_Ash_Cloud",
+                    "target": "Airport_Heathrow",
+                    "type": "COVERS"
+                },
+                {
+                    "source": "Volcanic_Ash_Cloud",
+                    "target": "AirFreight_Z",
+                    "type": "GROUNDS_FLIGHTS"
+                }
+            ]
+        }
+    },
+    {
+        "contract_id": "C05",
+        "title": "Mining & Raw Materials",
+        "contract_text": "BatteryCorp secures Lithium supply from Mine_Salar_C in Chile. The extracted material is processed at Refinery_D before shipment. Transport to the Port_of_Antofagasta is via Highway_Route_5. Road blockage voids the delivery guarantee.",
+        "base_graph": {
+            "entities": [
+                {
+                    "id": "BatteryCorp",
+                    "type": "Company"
+                },
+                {
+                    "id": "Lithium",
+                    "type": "RawMaterial"
+                },
+                {
+                    "id": "Mine_Salar_C",
+                    "type": "ExtractionSite"
+                },
+                {
+                    "id": "Chile",
+                    "type": "Country"
+                },
+                {
+                    "id": "Refinery_D",
+                    "type": "Facility"
+                },
+                {
+                    "id": "Port_of_Antofagasta",
+                    "type": "Port"
+                },
+                {
+                    "id": "Highway_Route_5",
+                    "type": "Infrastructure"
+                },
+                {
+                    "id": "Road_Blockage",
+                    "type": "RiskEvent"
+                }
+            ],
+            "relations": [
+                {
+                    "source": "BatteryCorp",
+                    "target": "Mine_Salar_C",
+                    "type": "CONTRACTS"
+                },
+                {
+                    "source": "Mine_Salar_C",
+                    "target": "Chile",
+                    "type": "LOCATED_IN"
+                },
+                {
+                    "source": "Mine_Salar_C",
+                    "target": "Lithium",
+                    "type": "EXTRACTS"
+                },
+                {
+                    "source": "Lithium",
+                    "target": "Refinery_D",
+                    "type": "PROCESSED_AT"
+                },
+                {
+                    "source": "Refinery_D",
+                    "target": "Highway_Route_5",
+                    "type": "CONNECTED_TO"
+                },
+                {
+                    "source": "Highway_Route_5",
+                    "target": "Port_of_Antofagasta",
+                    "type": "LEADS_TO"
+                },
+                {
+                    "source": "Highway_Route_5",
+                    "target": "Road_Blockage",
+                    "type": "SUSCEPTIBLE_TO"
+                }
+            ]
+        },
+        "news_sequence": {
+            "entities": [
+                {
+                    "id": "Political_Protests",
+                    "type": "SocialEvent"
+                },
+                {
+                    "id": "Chile",
+                    "type": "Country"
+                },
+                {
+                    "id": "Political_Protests",
+                    "type": "SocialEvent"
+                },
+                {
+                    "id": "Highway_Route_5",
+                    "type": "Infrastructure"
+                }
+            ],
+            "relations": [
+                {
+                    "source": "Political_Protests",
+                    "target": "Chile",
+                    "type": "ERUPT_IN"
+                },
+                {
+                    "source": "Political_Protests",
+                    "target": "Highway_Route_5",
+                    "type": "BARRICADE"
+                }
+            ]
+        }
+    },
+    {
+        "contract_id": "C06",
+        "title": "Textile & Apparel",
+        "contract_text": "FastFashion_Brand imports Cotton_Fabrics from TextileMill_K in Bangladesh. The mill is powered by the local Grid_Dhaka. Finished goods are shipped via the Bay_of_Bengal route. TextileMill_K sources raw cotton from Farm_Region_X.",
+        "base_graph": {
+            "entities": [
+                {
+                    "id": "FastFashion_Brand",
+                    "type": "Company"
+                },
+                {
+                    "id": "Cotton_Fabrics",
+                    "type": "Product"
+                },
+                {
+                    "id": "TextileMill_K",
+                    "type": "Manufacturer"
+                },
+                {
+                    "id": "Bangladesh",
+                    "type": "Country"
+                },
+                {
+                    "id": "Grid_Dhaka",
+                    "type": "Utility"
+                },
+                {
+                    "id": "Bay_of_Bengal",
+                    "type": "Route"
+                },
+                {
+                    "id": "Farm_Region_X",
+                    "type": "Supplier"
+                }
+            ],
+            "relations": [
+                {
+                    "source": "FastFashion_Brand",
+                    "target": "TextileMill_K",
+                    "type": "SOURCES_FROM"
+                },
+                {
+                    "source": "TextileMill_K",
+                    "target": "Bangladesh",
+                    "type": "LOCATED_IN"
+                },
+                {
+                    "source": "TextileMill_K",
+                    "target": "Cotton_Fabrics",
+                    "type": "PRODUCES"
+                },
+                {
+                    "source": "TextileMill_K",
+                    "target": "Grid_Dhaka",
+                    "type": "CONSUMES_POWER"
+                },
+                {
+                    "source": "Cotton_Fabrics",
+                    "target": "Bay_of_Bengal",
+                    "type": "SHIPPED_VIA"
+                },
+                {
+                    "source": "TextileMill_K",
+                    "target": "Farm_Region_X",
+                    "type": "DEPENDS_ON_RAW_MATERIAL"
+                }
+            ]
+        },
+        "news_sequence": {
+            "entities": [
+                {
+                    "id": "Heatwave_2026",
+                    "type": "WeatherEvent"
+                },
+                {
+                    "id": "Bangladesh",
+                    "type": "Country"
+                },
+                {
+                    "id": "Heatwave_2026",
+                    "type": "WeatherEvent"
+                },
+                {
+                    "id": "Grid_Dhaka",
+                    "type": "Utility"
+                }
+            ],
+            "relations": [
+                {
+                    "source": "Heatwave_2026",
+                    "target": "Bangladesh",
+                    "type": "HITS"
+                },
+                {
+                    "source": "Heatwave_2026",
+                    "target": "Grid_Dhaka",
+                    "type": "OVERLOADS"
+                }
+            ]
+        }
+    },
+    {
+        "contract_id": "C07",
+        "title": "Construction",
+        "contract_text": "Skyline_Constructors hires CementCo_Local for the City_Tower_Project. CementCo_Local uses Limestone from Quarry_Q. Quarry_Q is located near River_Delta_Z (Flood Zone). Delivery requires Bridge_Alpha to be operational.",
+        "base_graph": {
+            "entities": [
+                {
+                    "id": "Skyline_Constructors",
+                    "type": "Company"
+                },
+                {
+                    "id": "City_Tower_Project",
+                    "type": "Project"
+                },
+                {
+                    "id": "CementCo_Local",
+                    "type": "Supplier"
+                },
+                {
+                    "id": "Limestone",
+                    "type": "Material"
+                },
+                {
+                    "id": "Quarry_Q",
+                    "type": "ExtractionSite"
+                },
+                {
+                    "id": "River_Delta_Z",
+                    "type": "Location"
+                },
+                {
+                    "id": "Bridge_Alpha",
+                    "type": "Infrastructure"
+                }
+            ],
+            "relations": [
+                {
+                    "source": "Skyline_Constructors",
+                    "target": "CementCo_Local",
+                    "type": "EMPLOYS"
+                },
+                {
+                    "source": "CementCo_Local",
+                    "target": "City_Tower_Project",
+                    "type": "SUPPLIES_TO"
+                },
+                {
+                    "source": "CementCo_Local",
+                    "target": "Quarry_Q",
+                    "type": "SOURCES_FROM"
+                },
+                {
+                    "source": "Quarry_Q",
+                    "target": "Limestone",
+                    "type": "PRODUCES"
+                },
+                {
+                    "source": "Quarry_Q",
+                    "target": "River_Delta_Z",
+                    "type": "LOCATED_NEAR"
+                },
+                {
+                    "source": "CementCo_Local",
+                    "target": "Bridge_Alpha",
+                    "type": "USES_FOR_TRANSPORT"
+                }
+            ]
+        },
+        "news_sequence": {
+            "entities": [
+                {
+                    "id": "Flash_Floods",
+                    "type": "WeatherEvent"
+                },
+                {
+                    "id": "River_Delta_Z",
+                    "type": "Location"
+                },
+                {
+                    "id": "Flash_Floods",
+                    "type": "WeatherEvent"
+                },
+                {
+                    "id": "Quarry_Q",
+                    "type": "ExtractionSite"
+                }
+            ],
+            "relations": [
+                {
+                    "source": "Flash_Floods",
+                    "target": "River_Delta_Z",
+                    "type": "SUBMERGE"
+                },
+                {
+                    "source": "Flash_Floods",
+                    "target": "Quarry_Q",
+                    "type": "ISOLATES"
+                }
+            ]
+        }
+    },
+    {
+        "contract_id": "C08",
+        "title": "Aerospace Components",
+        "contract_text": "AeroSpace_X buys Turbine_Blades from PrecisionEng_Ltd in UK. The blades contain Titanium_Alloy sourced from Supplier_Rus. PrecisionEng_Ltd operations depend on Software_System_CAD provided by TechSoft_USA.",
+        "base_graph": {
+            "entities": [
+                {
+                    "id": "AeroSpace_X",
+                    "type": "Company"
+                },
+                {
+                    "id": "Turbine_Blades",
+                    "type": "Component"
+                },
+                {
+                    "id": "PrecisionEng_Ltd",
+                    "type": "Manufacturer"
+                },
+                {
+                    "id": "UK",
+                    "type": "Country"
+                },
+                {
+                    "id": "Titanium_Alloy",
+                    "type": "Material"
+                },
+                {
+                    "id": "Supplier_Rus",
+                    "type": "Supplier"
+                },
+                {
+                    "id": "Software_System_CAD",
+                    "type": "Service"
+                },
+                {
+                    "id": "TechSoft_USA",
+                    "type": "ServiceProvider"
+                }
+            ],
+            "relations": [
+                {
+                    "source": "AeroSpace_X",
+                    "target": "PrecisionEng_Ltd",
+                    "type": "PURCHASES_FROM"
+                },
+                {
+                    "source": "PrecisionEng_Ltd",
+                    "target": "Turbine_Blades",
+                    "type": "MANUFACTURES"
+                },
+                {
+                    "source": "PrecisionEng_Ltd",
+                    "target": "UK",
+                    "type": "LOCATED_IN"
+                },
+                {
+                    "source": "Turbine_Blades",
+                    "target": "Titanium_Alloy",
+                    "type": "CONTAINS"
+                },
+                {
+                    "source": "PrecisionEng_Ltd",
+                    "target": "Supplier_Rus",
+                    "type": "IMPORTS_FROM"
+                },
+                {
+                    "source": "PrecisionEng_Ltd",
+                    "target": "TechSoft_USA",
+                    "type": "LICENSES_FROM"
+                },
+                {
+                    "source": "TechSoft_USA",
+                    "target": "Software_System_CAD",
+                    "type": "PROVIDES"
+                }
+            ]
+        },
+        "news_sequence": {
+            "entities": [
+                {
+                    "id": "New_Trade_Sanctions",
+                    "type": "Regulation"
+                },
+                {
+                    "id": "Supplier_Rus",
+                    "type": "Supplier"
+                },
+                {
+                    "id": "New_Trade_Sanctions",
+                    "type": "Regulation"
+                },
+                {
+                    "id": "Titanium_Alloy",
+                    "type": "Material"
+                }
+            ],
+            "relations": [
+                {
+                    "source": "New_Trade_Sanctions",
+                    "target": "Supplier_Rus",
+                    "type": "TARGET"
+                },
+                {
+                    "source": "New_Trade_Sanctions",
+                    "target": "Titanium_Alloy",
+                    "type": "BAN_EXPORT_OF"
+                }
+            ]
+        }
+    },
+    {
+        "contract_id": "C09",
+        "title": "Food & Agriculture",
+        "contract_text": "GlobalFoods imports Wheat from GrainCorp_UA in Ukraine. The cargo traverses the Black_Sea and passes through the Bosphorus_Strait. GrainCorp_UA storage facilities utilize Silo_Complex_Odessa.",
+        "base_graph": {
+            "entities": [
+                {
+                    "id": "GlobalFoods",
+                    "type": "Company"
+                },
+                {
+                    "id": "Wheat",
+                    "type": "Commodity"
+                },
+                {
+                    "id": "GrainCorp_UA",
+                    "type": "Supplier"
+                },
+                {
+                    "id": "Ukraine",
+                    "type": "Country"
+                },
+                {
+                    "id": "Black_Sea",
+                    "type": "Route"
+                },
+                {
+                    "id": "Bosphorus_Strait",
+                    "type": "ChokePoint"
+                },
+                {
+                    "id": "Silo_Complex_Odessa",
+                    "type": "Facility"
+                }
+            ],
+            "relations": [
+                {
+                    "source": "GlobalFoods",
+                    "target": "GrainCorp_UA",
+                    "type": "TRADES_WITH"
+                },
+                {
+                    "source": "GrainCorp_UA",
+                    "target": "Ukraine",
+                    "type": "LOCATED_IN"
+                },
+                {
+                    "source": "GrainCorp_UA",
+                    "target": "Wheat",
+                    "type": "EXPORTS"
+                },
+                {
+                    "source": "GrainCorp_UA",
+                    "target": "Silo_Complex_Odessa",
+                    "type": "STORES_AT"
+                },
+                {
+                    "source": "Wheat",
+                    "target": "Black_Sea",
+                    "type": "CROSSES"
+                },
+                {
+                    "source": "Black_Sea",
+                    "target": "Bosphorus_Strait",
+                    "type": "CONNECTS_TO"
+                }
+            ]
+        },
+        "news_sequence": {
+            "entities": [
+                {
+                    "id": "Military_Blockade",
+                    "type": "ConflictEvent"
+                },
+                {
+                    "id": "Black_Sea",
+                    "type": "Route"
+                },
+                {
+                    "id": "Military_Blockade",
+                    "type": "ConflictEvent"
+                },
+                {
+                    "id": "Bosphorus_Strait",
+                    "type": "ChokePoint"
+                }
+            ],
+            "relations": [
+                {
+                    "source": "Military_Blockade",
+                    "target": "Black_Sea",
+                    "type": "BLOCKS"
+                },
+                {
+                    "source": "Military_Blockade",
+                    "target": "Bosphorus_Strait",
+                    "type": "CLOSES_ACCESS_TO"
+                }
+            ]
+        }
+    },
+    {
+        "contract_id": "C10",
+        "title": "Chemical Industry",
+        "contract_text": "ChemSynth requires Sulfur_Dioxide from Supplier_S. The chemical is transported via Rail_Line_9 through the Mountain_Pass_K. Supplier_S production is halted if Strike_Action occurs at the Labor_Union_M.",
+        "base_graph": {
+            "entities": [
+                {
+                    "id": "ChemSynth",
+                    "type": "Company"
+                },
+                {
+                    "id": "Sulfur_Dioxide",
+                    "type": "Chemical"
+                },
+                {
+                    "id": "Supplier_S",
+                    "type": "Supplier"
+                },
+                {
+                    "id": "Rail_Line_9",
+                    "type": "Infrastructure"
+                },
+                {
+                    "id": "Mountain_Pass_K",
+                    "type": "Location"
+                },
+                {
+                    "id": "Labor_Union_M",
+                    "type": "Organization"
+                },
+                {
+                    "id": "Strike_Action",
+                    "type": "RiskEvent"
+                }
+            ],
+            "relations": [
+                {
+                    "source": "ChemSynth",
+                    "target": "Supplier_S",
+                    "type": "CONTRACTS"
+                },
+                {
+                    "source": "Supplier_S",
+                    "target": "Sulfur_Dioxide",
+                    "type": "PRODUCES"
+                },
+                {
+                    "source": "Sulfur_Dioxide",
+                    "target": "Rail_Line_9",
+                    "type": "MOVED_BY"
+                },
+                {
+                    "source": "Rail_Line_9",
+                    "target": "Mountain_Pass_K",
+                    "type": "PASSES_THROUGH"
+                },
+                {
+                    "source": "Supplier_S",
+                    "target": "Labor_Union_M",
+                    "type": "EMPLOYS_MEMBERS_OF"
+                },
+                {
+                    "source": "Labor_Union_M",
+                    "target": "Strike_Action",
+                    "type": "CAN_INITIATE"
+                }
+            ]
+        },
+        "news_sequence": {
+            "entities": [
+                {
+                    "id": "Wage_Negotiations",
+                    "type": "Process"
+                },
+                {
+                    "id": "Labor_Union_M",
+                    "type": "Organization"
+                },
+                {
+                    "id": "Wage_Negotiations",
+                    "type": "Process"
+                },
+                {
+                    "id": "Indefinite_Strike",
+                    "type": "RiskEvent"
+                },
+                {
+                    "id": "Indefinite_Strike",
+                    "type": "RiskEvent"
+                },
+                {
+                    "id": "Supplier_S",
+                    "type": "Supplier"
+                }
+            ],
+            "relations": [
+                {
+                    "source": "Wage_Negotiations",
+                    "target": "Labor_Union_M",
+                    "type": "FAIL_WITH"
+                },
+                {
+                    "source": "Wage_Negotiations",
+                    "target": "Indefinite_Strike",
+                    "type": "RESULTS_IN"
+                },
+                {
+                    "source": "Indefinite_Strike",
+                    "target": "Supplier_S",
+                    "type": "SHUTS_DOWN"
+                }
+            ]
+        }
+    }
+]
