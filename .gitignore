@@ -1,0 +1,56 @@
+# =====================================
+# Python
+# =====================================
+# Virtual environment
+algdesEnv/
+venv/
+.env/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs and outputs
+*.log
+output/
+*.out
+*.tmp
+
+# Environment variables
+.env
+
+# =====================================
+# Office temp files (Word, Excel, etc.)
+# =====================================
+~$*.doc*
+~$*.xls*
+~$*.ppt*
+*.tmp
+*.bak
+*.swp
+
+# =====================================
+# OS and Editor specific
+# =====================================
+# Windows and macOS system files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# JetBrains / VSCode
+.idea/
+.vscode/
+
+# =====================================
+# Jupyter / Colab
+# =====================================
+.ipynb_checkpoints/
+*.ipynb_metadata
+
+# =====================================
+# Playground (experiments, drafts)
+# =====================================
+playground/
