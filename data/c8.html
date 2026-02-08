@@ -1,0 +1,163 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 800px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#00bfff", "font": {"color": "black"}, "id": "GlobalFoods", "label": "GlobalFoods", "shape": "ellipse", "title": "Company"}, {"color": "#00bfff", "font": {"color": "black"}, "id": "Wheat", "label": "Wheat", "shape": "ellipse", "title": "Commodity"}, {"color": "#00bfff", "font": {"color": "black"}, "id": "GrainCorp_UA", "label": "GrainCorp_UA", "shape": "ellipse", "title": "Supplier"}, {"color": "#00bfff", "font": {"color": "black"}, "id": "Ukraine", "label": "Ukraine", "shape": "ellipse", "title": "Country"}, {"color": "#ff4500", "font": {"color": "black"}, "id": "Black_Sea", "label": "Black_Sea", "shape": "ellipse", "title": "Route"}, {"color": "#ff4500", "font": {"color": "black"}, "id": "Bosphorus_Strait", "label": "Bosphorus_Strait", "shape": "ellipse", "title": "ChokePoint"}, {"color": "#00bfff", "font": {"color": "black"}, "id": "Silo_Complex_Odessa", "label": "Silo_Complex_Odessa", "shape": "ellipse", "title": "Facility"}, {"color": "#ff4500", "font": {"color": "black"}, "id": "Military_Blockade", "label": "Military_Blockade", "shape": "ellipse", "title": "ConflictEvent"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "font": {"size": 14}, "from": "GlobalFoods", "label": "TRADES_WITH", "to": "GrainCorp_UA"}, {"arrows": "to", "font": {"size": 14}, "from": "Wheat", "label": "CROSSES", "to": "Black_Sea"}, {"arrows": "to", "font": {"size": 14}, "from": "GrainCorp_UA", "label": "LOCATED_IN", "to": "Ukraine"}, {"arrows": "to", "font": {"size": 14}, "from": "GrainCorp_UA", "label": "EXPORTS", "to": "Wheat"}, {"arrows": "to", "font": {"size": 14}, "from": "GrainCorp_UA", "label": "STORES_AT", "to": "Silo_Complex_Odessa"}, {"arrows": "to", "font": {"size": 14}, "from": "Black_Sea", "label": "CONNECTS_TO", "to": "Bosphorus_Strait"}, {"arrows": "to", "font": {"size": 14}, "from": "Military_Blockade", "label": "BLOCKS", "to": "Black_Sea"}, {"arrows": "to", "font": {"size": 14}, "from": "Military_Blockade", "label": "CLOSES_ACCESS_TO", "to": "Bosphorus_Strait"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "barnesHut": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.25,
+            "damping": 0.09,
+            "gravitationalConstant": -25000,
+            "springConstant": 0.02,
+            "springLength": 300
+        },
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
