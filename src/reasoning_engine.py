@@ -51,10 +51,43 @@ class ReasoningEngine:
         if not G_combined.has_node(start_event):
             return []
 
+        # # 3. Custom BFS for Risk Propagation (Upstream + Downstream)
+        # # We search for ALL targets and store the shortest path to them.
+        # queue = [[start_event]]
+        # visited = {start_event}
+        
+        # found_paths = []
+
+        # while queue:
+        #     path = queue.pop(0)
+        #     node = path[-1]
+
+        #     # If we hit a target node (that is not the start node itself)
+        #     if node in targets and node != start_event:
+        #         found_paths.append(path)
+        #         # Optimization: To find multiple potential risks, we don't break immediately,
+        #         # but for simplicity in this snippet, we can collect valid paths.
+        #         continue
+            
+        #     # Stop if path gets too long (heuristic to prevent infinite loops in complex cycles)
+        #     if len(path) > 10:
+        #         continue
+
+        #     # CRITICAL FIX: Look at both outgoing (successors) and incoming (predecessors)
+        #     # This allows tracing "Factory -> LOCATED_IN -> Country" backwards from Country to Factory.
+        #     neighbors = list(G_combined.successors(node)) + list(G_combined.predecessors(node))
+            
+        #     for neighbor in neighbors:
+        #         if neighbor not in visited:
+        #             visited.add(neighbor)
+        #             new_path = list(path)
+        #             new_path.append(neighbor)
+        #             queue.append(new_path)
+
         # 3. Custom BFS for Risk Propagation (Upstream + Downstream)
         # We search for ALL targets and store the shortest path to them.
         queue = [[start_event]]
-        visited = {start_event}
+        # visited removed to allow diamond paths (multiple paths reaching same node)
         
         found_paths = []
 
@@ -65,24 +98,22 @@ class ReasoningEngine:
             # If we hit a target node (that is not the start node itself)
             if node in targets and node != start_event:
                 found_paths.append(path)
-                # Optimization: To find multiple potential risks, we don't break immediately,
-                # but for simplicity in this snippet, we can collect valid paths.
                 continue
             
-            # Stop if path gets too long (heuristic to prevent infinite loops in complex cycles)
+            # Stop if path gets too long
             if len(path) > 10:
                 continue
 
-            # CRITICAL FIX: Look at both outgoing (successors) and incoming (predecessors)
-            # This allows tracing "Factory -> LOCATED_IN -> Country" backwards from Country to Factory.
             neighbors = list(G_combined.successors(node)) + list(G_combined.predecessors(node))
             
             for neighbor in neighbors:
-                if neighbor not in visited:
-                    visited.add(neighbor)
+                # FIX: Only check if neighbor is not in CURRENT path to prevent cycles
+                # This allows the same node to be reached via different valid routes.
+                if neighbor not in path:
                     new_path = list(path)
                     new_path.append(neighbor)
                     queue.append(new_path)
+
 
         # Format results
         for p in found_paths:

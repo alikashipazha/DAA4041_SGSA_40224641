@@ -60,7 +60,7 @@ def main():
 
         if results:
             print(f"  [+] {len(results)} potential risk paths discovered.")
-            for i, res in enumerate(results[:2]): # Show top 2 paths
+            for i, res in enumerate(results): # Show all paths
                 chain_str = engine.get_formatted_chain(
                     res['path'], 
                     nx.compose(contract.base_graph, contract.news_graph)
