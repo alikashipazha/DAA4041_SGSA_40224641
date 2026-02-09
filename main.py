@@ -23,7 +23,7 @@ def main():
     print("=== SGSA: GraphRAG Causal Discovery System ===\n")
 
     # 1. Load Data
-    data_path = os.path.join("data", "contracts_and_news.json")
+    data_path = os.path.join("data/raw", "contracts_and_news.json")
     if not os.path.exists(data_path):
         print(f"Error: Data file not found at {data_path}")
         return
