@@ -51,8 +51,8 @@ Desktop.ini
 *.ipynb_metadata
 
 # =====================================
-# Playground (experiments, drafts) and Images
+# Playground (experiments, drafts) and Images and lib
 # =====================================
 playground/
-
 images/
+lib/
