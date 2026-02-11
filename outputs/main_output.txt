@@ -1,0 +1,94 @@
+=== SGSA: GraphRAG Causal Discovery System ===
+
+Successfully loaded 10 contracts from contracts_and_news.json
+
+Processing 10 contracts for risk analysis...
+
+--- Contract: C01 (Semiconductor Supply Chain Agreement) ---
+  [*] Bridge Nodes found: {'Port_of_Kaohsiung', 'Taiwan'}
+  [*] News Event Trigger: Typhoon_Krathon
+  [+] 3 potential risk paths discovered.
+      Path 1: Typhoon_Krathon --(APPROACHES)--> Taiwan <--(LOCATED_IN)-- SiliconFoundry --(PRODUCES)--> GPU_Chips
+      Path 2: Typhoon_Krathon --(FLOODS)--> Kaohsiung_Region --(CLOSES)--> Port_of_Kaohsiung <--(SHIPPED_FROM)-- GPU_Chips
+      Path 3: Typhoon_Krathon --(APPROACHES)--> Taiwan <--(LOCATED_IN)-- SiliconFoundry <--(HAS_CONTRACT_WITH)-- TechCore_Inc --(ENFORCES)--> 1M_Penalty
+
+==================================================
+
+--- Contract: C02 (Energy & Pipeline) ---
+  [*] Bridge Nodes found: {'Field_A', 'Baltic_Pipeline_1'}
+  [*] News Event Trigger: Seismic_Activity
+  [+] 1 potential risk paths discovered.
+      Path 1: Seismic_Activity --(TRIGGERS)--> Safety_Protocol_Lockdown --(HALTS_OUTPUT)--> Baltic_Pipeline_1 --(DEPENDS_ON)--> Compressor_Station_Z --(VULNERABLE_TO)--> Pressure_Drop
+
+==================================================
+
+--- Contract: C03 (Automotive Manufacturing) ---
+  [*] Bridge Nodes found: {'Rail_Cargo_DB'}
+  [*] News Event Trigger: Trade_Union_GDL
+  [+] 1 potential risk paths discovered.
+      Path 1: Trade_Union_GDL --(STRIKES_AGAINST)--> Rail_Cargo_DB <--(MOVED_BY)-- Steel_Sheets <--(MANUFACTURES)-- SteelWorks_Gmbh <--(SUPPLIER_RELATION)-- AutoMotive_Global
+
+==================================================
+
+--- Contract: C04 (Pharmaceutical Cold Chain) ---
+  [*] Bridge Nodes found: {'Airport_Heathrow', 'AirFreight_Z'}
+  [*] News Event Trigger: Volcanic_Ash_Cloud
+  [+] 2 potential risk paths discovered.
+      Path 1: Volcanic_Ash_Cloud --(GROUNDS_FLIGHTS)--> AirFreight_Z <--(TRANSPORTED_BY)-- Vaccine_X
+      Path 2: Volcanic_Ash_Cloud --(COVERS)--> Airport_Heathrow <--(ARRIVES_AT)-- AirFreight_Z <--(TRANSPORTED_BY)-- Vaccine_X
+
+==================================================
+
+--- Contract: C05 (Mining & Raw Materials) ---
+  [*] Bridge Nodes found: {'Highway_Route_5', 'Chile'}
+  [*] News Event Trigger: Political_Protests
+  [+] 2 potential risk paths discovered.
+      Path 1: Political_Protests --(ERUPT_IN)--> Chile <--(LOCATED_IN)-- Mine_Salar_C <--(CONTRACTS)-- BatteryCorp
+      Path 2: Political_Protests --(BARRICADE)--> Highway_Route_5 <--(CONNECTED_TO)-- Refinery_D <--(PROCESSED_AT)-- Lithium <--(EXTRACTS)-- Mine_Salar_C <--(CONTRACTS)-- BatteryCorp
+
+==================================================
+
+--- Contract: C06 (Textile & Apparel) ---
+  [*] Bridge Nodes found: {'Bangladesh', 'Grid_Dhaka'}
+  [*] News Event Trigger: Heatwave_2026
+  [+] 2 potential risk paths discovered.
+      Path 1: Heatwave_2026 --(HITS)--> Bangladesh <--(LOCATED_IN)-- TextileMill_K --(PRODUCES)--> Cotton_Fabrics
+      Path 2: Heatwave_2026 --(OVERLOADS)--> Grid_Dhaka <--(CONSUMES_POWER)-- TextileMill_K --(PRODUCES)--> Cotton_Fabrics
+
+==================================================
+
+--- Contract: C07 (Construction) ---
+  [*] Bridge Nodes found: {'Quarry_Q', 'River_Delta_Z'}
+  [*] News Event Trigger: Flash_Floods
+  [+] 2 potential risk paths discovered.
+      Path 1: Flash_Floods --(ISOLATES)--> Quarry_Q <--(SOURCES_FROM)-- CementCo_Local <--(EMPLOYS)-- Skyline_Constructors
+      Path 2: Flash_Floods --(SUBMERGE)--> River_Delta_Z <--(LOCATED_NEAR)-- Quarry_Q <--(SOURCES_FROM)-- CementCo_Local <--(EMPLOYS)-- Skyline_Constructors
+
+==================================================
+
+--- Contract: C08 (Aerospace Components) ---
+  [*] Bridge Nodes found: {'Supplier_Rus', 'Titanium_Alloy'}
+  [*] News Event Trigger: New_Trade_Sanctions
+  [+] 2 potential risk paths discovered.
+      Path 1: New_Trade_Sanctions --(TARGET)--> Supplier_Rus <--(IMPORTS_FROM)-- PrecisionEng_Ltd <--(PURCHASES_FROM)-- AeroSpace_X
+      Path 2: New_Trade_Sanctions --(BAN_EXPORT_OF)--> Titanium_Alloy <--(CONTAINS)-- Turbine_Blades <--(MANUFACTURES)-- PrecisionEng_Ltd <--(PURCHASES_FROM)-- AeroSpace_X
+
+==================================================
+
+--- Contract: C09 (Food & Agriculture) ---
+  [*] Bridge Nodes found: {'Black_Sea', 'Bosphorus_Strait'}
+  [*] News Event Trigger: Military_Blockade
+  [+] 2 potential risk paths discovered.
+      Path 1: Military_Blockade --(BLOCKS)--> Black_Sea <--(CROSSES)-- Wheat <--(EXPORTS)-- GrainCorp_UA <--(TRADES_WITH)-- GlobalFoods        
+      Path 2: Military_Blockade --(CLOSES_ACCESS_TO)--> Bosphorus_Strait <--(CONNECTS_TO)-- Black_Sea <--(CROSSES)-- Wheat <--(EXPORTS)-- GrainCorp_UA <--(TRADES_WITH)-- GlobalFoods
+
+==================================================
+
+--- Contract: C10 (Chemical Industry) ---
+  [*] Bridge Nodes found: {'Labor_Union_M', 'Supplier_S'}
+  [*] News Event Trigger: Wage_Negotiations
+  [+] 2 potential risk paths discovered.
+      Path 1: Wage_Negotiations --(FAIL_WITH)--> Labor_Union_M <--(EMPLOYS_MEMBERS_OF)-- Supplier_S <--(CONTRACTS)-- ChemSynth
+      Path 2: Wage_Negotiations --(RESULTS_IN)--> Indefinite_Strike --(SHUTS_DOWN)--> Supplier_S <--(CONTRACTS)-- ChemSynth
+
+==================================================

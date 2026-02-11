@@ -56,3 +56,5 @@ Desktop.ini
 playground/
 images/
 lib/
+
+.env

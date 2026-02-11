@@ -1,0 +1,58 @@
+=== GraphRAG with Neo4j & LLM ===
+
+Successfully loaded 10 contracts from contracts_and_news.json
+[Neo4j] Database cleared.
+
+--- Ingesting Data into Graph Database ---
+[Neo4j] Ingested contract: C01
+[Neo4j] Ingested contract: C02
+[Neo4j] Ingested contract: C03
+[Neo4j] Ingested contract: C04
+[Neo4j] Ingested contract: C05
+[Neo4j] Ingested contract: C06
+[Neo4j] Ingested contract: C07
+[Neo4j] Ingested contract: C08
+[Neo4j] Ingested contract: C09
+[Neo4j] Ingested contract: C10
+
+--- Starting LLM-based Risk Analysis ---
+
+[?] Analyzing Impact of: Typhoon_Krathon (Contract C01)
+
+
+> Entering new GraphCypherQAChain chain...
+Generated Cypher:
+MATCH p = (n {id: 'Typhoon_Krathon'})-[*1..3]-(m) RETURN p
+Full Context:
+[{'p': [{'id': 'Typhoon_Krathon', 'category': 'News'}, 'FLOODS', {'id': 'Kaohsiung_Region', 'category': 'News'}]}, {'p': [{'id': 'Typhoon_Krathon', 'category': 'News'}, 'FLOODS', {'id': 'Kaohsiung_Region', 'category': 'News'}, 'CLOSES', {'id': 'Port_of_Kaohsiung', 'category': 'News'}]}, {'p': [{'id': 'Typhoon_Krathon', 'category': 'News'}, 'FLOODS', {'id': 'Kaohsiung_Region', 'category': 'News'}, 'CLOSES', {'id': 'Port_of_Kaohsiung', 'category': 'News'}, 'SHIPPED_FROM', {'id': 'GPU_Chips', 'category': 'Base'}]}, {'p': [{'id': 'Typhoon_Krathon', 'category': 'News'}, 'APPROACHES', {'id': 'Taiwan', 'category': 'News'}]}, {'p': [{'id': 'Typhoon_Krathon', 'category': 'News'}, 'APPROACHES', {'id': 'Taiwan', 'category': 'News'}, 'LOCATED_IN', {'id': 'SiliconFoundry', 'category': 'Base'}]}, {'p': [{'id': 'Typhoon_Krathon', 'category': 'News'}, 'APPROACHES', {'id': 'Taiwan', 'category': 'News'}, 'LOCATED_IN', {'id': 'SiliconFoundry', 'category': 'Base'}, 'PRODUCES', {'id': 'GPU_Chips', 'category': 'Base'}]}, {'p': [{'id': 'Typhoon_Krathon', 'category': 'News'}, 'APPROACHES', {'id': 'Taiwan', 'category': 'News'}, 'LOCATED_IN', {'id': 'SiliconFoundry', 'category': 'Base'}, 'HAS_CONTRACT_WITH', {'id': 'TechCore_Inc', 'category': 'Base'}]}]
+
+> Finished chain.
+
+[LLM Response]:
+Typhoon Krathon is approaching Taiwan and causing floods in the Kaohsiung Region, which has led to the closure of the Port of Kaohsiung. This closure impacts the supply chain as GPU Chips are shipped from this port. Additionally, SiliconFoundry, which is located in Taiwan and produces these GPU Chips, has a contract with TechCore Inc.
+
+The chain of affected entities is as follows:
+Typhoon Krathon → Taiwan (Kaohsiung Region) → Port of Kaohsiung and SiliconFoundry → GPU Chips → TechCore Inc.
+--------------------------------------------------
+
+[?] Analyzing Impact of: Trade_Union_GDL (Contract C03)
+
+
+> Entering new GraphCypherQAChain chain...
+Generated Cypher:
+MATCH p = ({id: 'Trade_Union_GDL'})-[*1..3]-(m) RETURN p
+Full Context:
+[{'p': [{'id': 'Trade_Union_GDL', 'category': 'News'}, 'BLOCKS', {'id': 'German_Logistics_Hubs', 'category': 'News'}]}, {'p': [{'id': 'Trade_Union_GDL', 'category': 'News'}, 'STRIKES_AGAINST', {'id': 'Rail_Cargo_DB', 'category': 'News'}]}, {'p': [{'id': 'Trade_Union_GDL', 'category': 'News'}, 'STRIKES_AGAINST', {'id': 'Rail_Cargo_DB', 'category': 'News'}, 'MOVED_BY', {'id': 'Steel_Sheets', 'category': 'Base'}]}, {'p': [{'id': 'Trade_Union_GDL', 'category': 'News'}, 'STRIKES_AGAINST', {'id': 'Rail_Cargo_DB', 'category': 'News'}, 'MOVED_BY', {'id': 'Steel_Sheets', 'category': 'Base'}, 'MANUFACTURES', {'id': 'SteelWorks_Gmbh', 'category': 'Base'}]}, {'p': [{'id': 'Trade_Union_GDL', 'category': 'News'}, 'STRIKES_AGAINST', {'id': 'Rail_Cargo_DB', 'category': 'News'}, 'MOVED_BY', {'id': 'Steel_Sheets', 'category': 'Base'}, 'DELIVERED_TO', {'id': 'Assembly_Plant_F', 'category': 'Base'}]}]
+
+> Finished chain.
+
+[LLM Response]:
+The Trade Union GDL is impacting several companies and logistics operations through strikes and blockades. Specifically, the union is blocking German Logistics Hubs and striking against Rail Cargo DB. This strike disrupts the movement of Steel Sheets, which directly affects SteelWorks Gmbh, the manufacturer of the sheets, and Assembly Plant F, where the sheets are delivered.
+
+The chain of affected entities is as follows:
+1. **German Logistics Hubs** (blocked by the union)
+2. **Rail Cargo DB** (targeted by strikes)
+3. **Steel Sheets** (transportation is disrupted)
+4. **SteelWorks Gmbh** (the manufacturer of the affected steel sheets)
+5. **Assembly Plant F** (the delivery destination for the steel sheets)
+--------------------------------------------------

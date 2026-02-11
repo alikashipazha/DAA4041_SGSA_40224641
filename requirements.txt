@@ -1,0 +1,9 @@
+neo4j
+python-dotenv
+networkx
+pyvis
+langchain
+langchain-core
+langchain-neo4j
+langchain-community
+langchain-google-genai
